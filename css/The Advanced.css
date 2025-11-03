@@ -1,0 +1,446 @@
+/* -------------------------------------------------------------------------- */
+/* CSS Custom Properties (Variables) */
+/* -------------------------------------------------------------------------- */
+
+:root {
+    --color-primary: #3173f1; /* NEW: Deep Teal for finance/authority */
+    --color-accent: #11b981;  /* Amber for highlights */
+    --color-text-dark: #1f2937;
+    --color-text-light: #6b7280;
+    --color-bg-light: #f3f4f6; /* Light gray background */
+    --color-bg-dark: #111827;
+    --font-sans: 'Inter', system-ui, sans-serif;
+    --border-radius: 0.75rem;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Base Styles & Utility Classes (Unchanged) */
+/* -------------------------------------------------------------------------- */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-sans);
+    color: var(--color-text-dark);
+    background-color: white;
+    line-height: 1.6;
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+section {
+    padding: 5rem 0;
+}
+
+h1,
+h2 {
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+
+h2.section-heading {
+    font-size: 2.5rem;
+    text-align: center;
+    color: var(--color-text-dark);
+    margin-bottom: 3rem;
+    padding-top: 1rem;
+    border-top: 4px solid var(--color-primary);
+    display: inline-block;
+    padding-right: 20px;
+    padding-left: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width: fit-content;
+}
+
+
+/* -------------------------------------------------------------------------- */
+/* 1. Header and Navigation (Updated Colors) */
+/* -------------------------------------------------------------------------- */
+
+header {
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+/* ... (Rest of Header/Nav remains the same, using new --color-primary) ... */
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 4.5rem;
+}
+
+#logo a {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--color-text-dark);
+    text-decoration: none;
+}
+
+#logo .highlight {
+    color: var(--color-primary);
+}
+
+#main-nav {
+    display: none;
+}
+
+#main-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+#main-nav a {
+    text-decoration: none;
+    color: var(--color-text-light);
+    font-weight: 500;
+    position: relative;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+#main-nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 0;
+    height: 2px;
+    background: var(--color-primary);
+    transition: width 0.3s ease;
+}
+
+#main-nav a:hover {
+    color: var(--color-primary);
+    transform: translateY(-1px);
+    letter-spacing: 0.1px;
+}
+
+#main-nav a:hover::after {
+    width: 100%;
+}
+
+
+/* -------------------------------------------------------------------------- */
+/* CTA Buttons (Updated to use new primary color) */
+/* -------------------------------------------------------------------------- */
+
+.primary-cta {
+    display: inline-block;
+    padding: 1rem 2rem;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    text-align: center;
+    border: 2px solid transparent;
+    cursor: pointer;
+    background-color: var(--color-primary);
+    color: white;
+    box-shadow: 0 6px 15px rgba(15, 118, 110, 0.4);
+    font-size: 1.1rem;
+    text-transform: uppercase;
+}
+
+.primary-cta:hover {
+    background-color: #0d6860; /* Darker Teal */
+    transform: translateY(-3px) scale(1.01);
+    box-shadow: 0 10px 25px rgba(15, 118, 110, 0.6);
+}
+
+/* -------------------------------------------------------------------------- */
+/* 4. Course Hero Section (New Styling) */
+/* -------------------------------------------------------------------------- */
+
+#course-hero {
+    background-color: var(--color-bg-dark);
+    color: white;
+    padding: 8rem 0 5rem;
+    text-align: center;
+}
+
+#course-hero .tagline {
+    font-size: 1.1rem;
+    color: var(--color-accent);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+#course-hero .page-title {
+    font-size: 4rem;
+    font-weight: 900;
+    margin-bottom: 1.5rem;
+    color: white;
+}
+
+#course-hero .page-subtitle {
+    font-size: 1.4rem;
+    max-width: 800px;
+    margin: 0 auto 2.5rem;
+    color: #a0aec0;
+    line-height: 1.5;
+}
+
+.hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin-bottom: 3rem;
+    color: #a0aec0;
+    font-weight: 600;
+}
+
+.hero-stats span i {
+    color: var(--color-accent);
+    margin-right: 0.5rem;
+}
+
+/* -------------------------------------------------------------------------- */
+/* 5. Modules Section */
+/* -------------------------------------------------------------------------- */
+
+#course-modules {
+    background-color: white;
+}
+
+.module-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.module-item {
+    background-color: var(--color-bg-light); 
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.module-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    border-bottom: 4px solid var(--color-primary);
+}
+
+.module-icon {
+    font-size: 2.5rem;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+}
+
+.module-item h4 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: var(--color-text-dark);
+}
+
+.module-item p {
+    color: var(--color-text-light);
+    font-size: 0.95rem;
+}
+
+/* -------------------------------------------------------------------------- */
+/* 6. Enroll CTA / Pricing Section */
+/* -------------------------------------------------------------------------- */
+
+#enroll {
+    background-color: var(--color-bg-light); /* Light gray for contrast */
+    padding: 5rem 0;
+    text-align: center;
+}
+
+.enroll-box {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: white;
+    padding: 3rem;
+    border-radius: var(--border-radius);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+.enroll-pitch {
+    font-size: 1.25rem;
+    max-width: 700px;
+    margin-bottom: 2rem;
+    line-height: 1.5;
+    color: var(--color-text-dark);
+    font-weight: 500;
+}
+
+.pricing-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    border: 2px solid var(--color-primary);
+    border-radius: var(--border-radius);
+    background-color: #f7fcfc;
+}
+
+.price-old {
+    text-decoration: line-through;
+    color: #ef4444; /* Red for discount */
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.price-new {
+    font-size: 3rem;
+    font-weight: 900;
+    color: var(--color-primary);
+    margin-top: -10px;
+    margin-bottom: 0.5rem;
+}
+
+.offer-details {
+    color: var(--color-text-light);
+    margin-bottom: 2rem;
+    font-style: italic;
+    font-weight: 600;
+}
+
+.final-cta {
+    width: 100%;
+    max-width: 350px;
+}
+
+/* -------------------------------------------------------------------------- */
+/* 6. Minimalist Footer Styling (FIXED) */
+/* -------------------------------------------------------------------------- */
+
+.brand-minimalist-footer {
+    background-color: #1c1c1c;
+    color: #e0e0e0;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+.footer-grid-wrapper {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr); /* Mobile: Single column */
+    gap: 40px;
+    padding: 0 20px 40px;
+    border-bottom: 1px solid #333;
+}
+
+.brand-minimalist-footer h4 {
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 0.9em;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.brand-logo-text {
+    font-size: 2.2em;
+    font-weight: 900;
+    letter-spacing: 2px;
+    color: #fff;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.footer-col-brand p, .footer-col-brand address {
+    font-size: 0.9em;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    color: #b0b0b0;
+}
+
+.footer-col-brand a {
+    color: #e0e0e0;
+    text-decoration: underline;
+    transition: color 0.3s;
+}
+
+.footer-col-nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-col-nav ul a {
+    color: #e0e0e0;
+    text-decoration: none;
+    line-height: 2.2;
+    font-size: 0.9em;
+    display: block;
+    transition: color 0.3s, padding-left 0.3s;
+}
+
+.social-icons-simple {
+    margin-bottom: 30px;
+}
+
+.social-icons-simple a {
+    color: #e0e0e0;
+    font-size: 1.4em;
+    margin-right: 20px;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.legal-links a {
+    color: #b0b0b0;
+    text-decoration: none;
+    font-size: 0.8em;
+    margin: 0 5px;
+    transition: color 0.3s;
+}
+
+.footer-copyright-bottom {
+    text-align: center;
+    padding-top: 15px;
+}
+
+.footer-copyright-bottom p {
+    margin: 0;
+    font-size: 0.75em;
+    color: #777;
+    letter-spacing: 0.5px;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Media Queries (Responsive Adjustments) */
+/* -------------------------------------------------------------------------- */
+
+@media (min-width: 768px) {
+    #main-nav {
+        display: block;
+    }
+    .footer-grid-wrapper {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 40px;
+        text-align: left;
+    }
+    .social-icons-simple {
+        display: block;
+        text-align: left;
+    }
+}

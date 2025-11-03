@@ -1,0 +1,523 @@
+/* -------------------------------------------------------------------------- */
+/* CSS Custom Properties (Variables) */
+/* -------------------------------------------------------------------------- */
+
+:root {
+    --color-primary: #3b82f6;
+    /* Blue 500 - Professional and trustworthy */
+    --color-accent: #10b981;
+    /* Emerald 500 - Success and CTA contrast */
+    --color-text-dark: #1f2937;
+    --color-text-light: #6b7280;
+    --color-bg-light: #f9fafb;
+    --color-bg-dark: #111827;
+    --font-sans: 'Inter', system-ui, sans-serif;
+    --border-radius: 0.75rem;
+    /* 12px for modern rounded corners */
+}
+
+/* -------------------------------------------------------------------------- */
+/* Base Styles & Utility Classes */
+/* -------------------------------------------------------------------------- */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-sans);
+    color: var(--color-text-dark);
+    background-color: white;
+    line-height: 1.6;
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+section {
+    padding: 5rem 0;
+}
+
+h1,
+h2 {
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+
+h2 {
+    font-size: 2.5rem;
+    text-align: center;
+    color: var(--color-text-dark);
+    margin-bottom: 2rem;
+}
+.active-link{
+    color: #3b82f6;
+    border-bottom: 2px solid #1c1c1c;
+    padding-bottom: 2px;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Header and Navigation (1) */
+/* -------------------------------------------------------------------------- */
+
+header {
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 4.5rem;
+    /* 72px */
+}
+
+#logo a {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--color-text-dark);
+    text-decoration: none;
+}
+
+#logo .highlight {
+    color: var(--color-primary);
+}
+
+#main-nav {
+    display: none;
+    /* Hidden by default on mobile */
+}
+
+#main-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+#main-nav a {
+  text-decoration: none;
+  color: var(--color-text-light);
+  font-weight: 500;
+  position: relative;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+#main-nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 2px;
+  background: var(--color-primary);
+  transition: width 0.3s ease;
+}
+
+#main-nav a:hover {
+  color: var(--color-primary);
+  transform: translateY(-1px);
+  letter-spacing: 0.1px;
+}
+
+#main-nav a:hover::after {
+  width: 100%;
+}
+
+/* -------------------------------------------------------------------------- */
+/* CTA Buttons */
+/* -------------------------------------------------------------------------- */
+
+.cta-button,
+.primary-cta,
+.secondary-cta,
+.affiliate-link {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--border-radius);
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  text-align: center;
+  border: 2px solid transparent;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+/* LEFT (Special) Button */
+.primary-cta {
+  background-color: #10b981;
+  color: white;
+  box-shadow: 0 6px 15px rgba(27, 27, 27, 0.4);
+}
+
+.primary-cta::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-25deg);
+}
+
+.primary-cta:hover {
+  background-color: #059669;
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 10px 25px rgba(50, 50, 50, 0.6);
+}
+
+.primary-cta:hover::before {
+  animation: shine 0.9s ease forwards;
+}
+
+@keyframes shine {
+  from {
+    left: -75%;
+  }
+  to {
+    left: 125%;
+  }
+}
+
+/* RIGHT (Simple) Button */
+.secondary-cta {
+  background-color: transparent;
+  color: white;
+  border: 2px solid white;
+  margin-left: 1rem;
+}
+
+.secondary-cta:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+  letter-spacing: 0.3px;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Hero Section (2) */
+/* -------------------------------------------------------------------------- */
+
+#hero {
+    background-color: var(--color-primary);
+    color: white;
+    text-align: center;
+    padding: 8rem 0;
+    background-image: linear-gradient(135deg, #1c1c1c);
+    border-radius: 0 0 50% 50% / 0 0 10% 10%;
+    /* Subtle wave effect at bottom */
+}
+
+#hero h1 {
+    font-size: 3rem;
+    max-width: 800px;
+    margin: 0 auto 1.5rem;
+}
+
+#hero p {
+    font-size: 1.15rem;
+    max-width: 650px;
+    margin: 0 auto 2.5rem;
+    color: #e0f2f1;
+    /* Lightened text */
+}
+
+.cta-group {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Course Listing Section (3) */
+/* -------------------------------------------------------------------------- */
+
+#courses {
+    background-color: var(--color-bg-light);
+}
+
+.course-grid {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: 1fr;
+    /* Mobile default */
+    margin-top: 3rem;
+}
+
+.course-card {
+    background-color: white;
+    border-radius: var(--border-radius);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+    padding: 2rem;
+    text-align: center;
+    border-top: 5px solid var(--color-accent);
+    transition: transform 0.3s ease;
+}
+
+.course-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.icon-placeholder {
+    font-size: 2.5rem;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+}
+
+.course-card h3 {
+    font-size: 1.4rem;
+    color: var(--color-text-dark);
+    margin-bottom: 0.75rem;
+}
+
+.course-card p {
+    color: var(--color-text-light);
+    margin-bottom: 1.5rem;
+    min-height: 4.5rem;
+    /* Ensure consistent card height */
+}
+
+.details {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.75rem 0;
+    border-top: 1px dashed #e5e7eb;
+    border-bottom: 1px dashed #e5e7eb;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.details span:first-child {
+    color: var(--color-primary);
+}
+
+.details span:last-child {
+    color: var(--color-accent);
+}
+
+.affiliate-link {
+    width: 100%;
+    background-color: var(--color-accent);
+    color: white;
+}
+
+.affiliate-link:hover {
+    background-color: #059669;
+}
+
+/* -------------------------------------------------------------------------- */
+/* --------------------- New Minimalist Footer Styling ---------------------- */
+/* -------------------------------------------------------------------------- */
+
+.brand-minimalist-footer {
+    background-color: #1c1c1c;
+    /* Very dark gray/near black */
+    color: #e0e0e0;
+    /* Light gray text */
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+.footer-grid-wrapper {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    /* Three equal columns */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    padding: 0 20px 40px;
+    border-bottom: 1px solid #333;
+    /* Subtle separator line */
+}
+
+/* Common Styles for Columns */
+.brand-minimalist-footer h4 {
+    color: #fff;
+    /* Pure white heading */
+    text-transform: uppercase;
+    font-size: 0.9em;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+/* 1. Brand Column */
+.brand-logo-text {
+    font-size: 2.2em;
+    font-weight: 900;
+    /* Extra bold for branding */
+    letter-spacing: 2px;
+    color: #fff;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.footer-col-brand p,
+.footer-col-brand address {
+    font-size: 0.9em;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    color: #b0b0b0;
+    /* Subdued gray for body text */
+}
+
+.footer-col-brand a {
+    color: #e0e0e0;
+    text-decoration: underline;
+    transition: color 0.3s;
+}
+
+.footer-col-brand a:hover {
+    color: #fff;
+}
+
+/* 2. Navigation Column */
+.footer-col-nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-col-nav ul a {
+    color: #e0e0e0;
+    text-decoration: none;
+    line-height: 2.2;
+    font-size: 0.9em;
+    display: block;
+    transition: color 0.3s, padding-left 0.3s;
+}
+
+.footer-col-nav ul a:hover {
+    color: #fff;
+    padding-left: 5px;
+    /* Subtle interaction/movement */
+}
+
+/* 3. Social & Legal Column */
+.social-icons-simple {
+    margin-bottom: 30px;
+}
+
+.social-icons-simple a {
+    color: #e0e0e0;
+    font-size: 1.4em;
+    margin-right: 20px;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.social-icons-simple a:hover {
+    color: #fff;
+    transform: scale(1.1);
+}
+
+.legal-links a {
+    color: #b0b0b0;
+    text-decoration: none;
+    font-size: 0.8em;
+    margin: 0 5px;
+    transition: color 0.3s;
+}
+
+.legal-links a:hover {
+    color: #fff;
+}
+
+/* Copyright Bar */
+.footer-copyright-bottom {
+    text-align: center;
+    padding-top: 15px;
+}
+
+.footer-copyright-bottom p {
+    margin: 0;
+    font-size: 0.75em;
+    color: #777;
+    /* Discreet copyright text */
+    letter-spacing: 0.5px;
+}
+
+/* Responsive adjustment */
+@media (max-width: 768px) {
+    .footer-grid-wrapper {
+        grid-template-columns: 1fr;
+        /* Single column stack */
+        gap: 30px;
+        text-align: center;
+    }
+
+    .footer-col-nav ul a {
+        padding-left: 0;
+    }
+
+    .footer-col-nav ul a:hover {
+        padding-left: 0;
+    }
+
+    .social-icons-simple {
+        display: flex;
+        justify-content: center;
+    }
+}
+
+/* -------------------------------------------------------------------------- */
+/* Media Queries (Responsive Adjustments) */
+/* -------------------------------------------------------------------------- */
+
+/* Tablet and larger */
+@media (min-width: 768px) {
+    #main-nav {
+        display: block;
+    }
+
+    #hero h1 {
+        font-size: 4rem;
+    }
+
+    .course-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .job-placements-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Desktop and larger */
+@media (min-width: 1024px) {
+    header .container {
+        height: 5rem;
+    }
+
+    #hero {
+        padding: 10rem 0;
+    }
+
+    #hero h1 {
+        font-size: 4.5rem;
+    }
+
+    .course-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
